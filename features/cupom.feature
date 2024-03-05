@@ -17,14 +17,14 @@ Funcionalidade: Uso de Cupons no Checkout
         Quando aplico o seguinte cupom: "MEUCAFE"
         Então o valor final da compra deve ser atualizado para "R$ 25,99"
 
-    Cenário: Cupom Expirado
+    @ddt
+    Esquema do Cenário: Tentativa de aplicar o desconto
 
-        Quando aplico o seguinte cupom: "PROMO20"
-        Então devo ver a notificação: "Cupom expirado!"
+        Quando aplico o seguinte cupom: "<cupom>"
+        Então devo ver a notificação: "<saida>"
             E o valor final da compra deve permanecer o mesmo
 
-    Cenário: Cupom Inválido
-
-        Quando aplico o seguinte cupom: "PROMO100"
-        Então devo ver a notificação: "Cupom inválido!"
-            E o valor final da compra deve permanecer o mesmo
+    Exemplos:
+    | cupom    |saida           |
+    | PROMO20  |Cupom expirado! |
+    | PROMO100 |Cupom inválido! |
